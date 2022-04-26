@@ -1,0 +1,19 @@
+version: '2'
+services:
+  usermgt:
+    image: usermgt:latest
+    container_name: usermgt
+    ports:
+    - "6200:6200"
+    restart: on-failure:3
+    environment:
+      HOST: postgresdb:5432
+      USERNAME: postgres
+      PASSWORD: postgres
+      DATABASE_NAME: usermgt
+networks:
+  default:
+    external:
+     name: mynetwork
+      
+
