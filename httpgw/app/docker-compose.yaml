@@ -1,0 +1,22 @@
+version: '2'
+services:
+  httpgw:
+    image: httpgw:latest
+    container_name: httpgw
+    ports:
+    - "6199:6199"
+    restart: on-failure:3
+    environment:
+      HOST: rabbitmq_rabbitmq_1
+      USERNAME: user
+      PASSWORD: bitnami
+      VHOST: /
+      EXCHANGE: message
+      EVENTRKEY: event
+      SNAPSHOTRKEY: snapshot    
+networks:
+  default:
+    external:
+     name: mynetwork
+      
+
